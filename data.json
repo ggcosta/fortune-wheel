@@ -1,0 +1,39 @@
+{
+    "data": [
+        { "option": "Boné", "style": { "backgroundColor": "#97dff2", "textColor": "white" }, "image":{"uri": "/bone.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Carregador", "style": { "backgroundColor": "#f49c5b", "textColor": "white" }, "image":{"uri": "/carregador.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Post It", "style": { "backgroundColor": "#e9dd6f", "textColor": "white" }, "image":{"uri": "/post_it.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Fita" , "style": { "backgroundColor": "#bed62d", "textColor": "white" }, "image":{"uri": "/fita.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Voucher", "style": { "backgroundColor": "#ea4b4b", "textColor": "white" }, "image":{"uri": "/voucher.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Boné", "style": { "backgroundColor": "#97dff2", "textColor": "white"}, "image":{"uri": "/bone.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Post It", "style": { "backgroundColor": "#e9dd6f", "textColor": "white" }, "image":{"uri": "/post_it.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Carregador", "style": { "backgroundColor": "#f49c5b", "textColor": "white" }, "image":{"uri": "/carregador.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Boné", "style": { "backgroundColor": "#97dff2", "textColor": "white" }, "image":{"uri": "/bone.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Moleskine", "style": { "backgroundColor": "#9e5ce5", "textColor": "white" }, "image":{"uri": "/moleskine.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Post It", "style": { "backgroundColor": "#e9dd6f", "textColor": "white" }, "image":{"uri": "/post_it.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Fita" , "style": { "backgroundColor": "#bed62d", "textColor": "white" }, "image":{"uri": "/fita.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Moleskine", "style": { "backgroundColor": "#9e5ce5", "textColor": "white" }, "image":{"uri": "/moleskine.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Carregador", "style": { "backgroundColor": "#f49c5b", "textColor": "white" }, "image":{"uri": "/carregador.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Fita" , "style": { "backgroundColor": "#bed62d", "textColor": "white" }, "image":{"uri": "/fita.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}},
+        { "option": "Post It", "style": { "backgroundColor": "#e9dd6f", "textColor": "white" }, "image":{"uri": "/post_it.png", "landscape": "true", "sizeMultiplier": 0.35, "offsetX": -50}}
+    ],
+
+    "chances": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        100,
+        1,
+        1,
+        1
+    ]
+}
