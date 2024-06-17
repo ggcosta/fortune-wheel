@@ -1,5 +1,8 @@
-import SpinningWheel from "./components/SpinningWheel";
+// import SpinningWheel from "./components/SpinningWheel";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const SpinningWheel = dynamic(() => import("./components/SpinningWheel"), { ssr: false });
 
 export default function Home() {
   return (
