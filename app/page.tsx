@@ -1,17 +1,60 @@
-// import SpinningWheel from "./components/SpinningWheel";
-import Image from "next/image";
+"use client";
+
 import dynamic from "next/dynamic";
+import dataJSON from "@/data.json";
+import { getIndexByChance } from "@/utils/aux";
+import { useEffect, useRef, useState } from "react";
+
 
 const SpinningWheel = dynamic(() => import("./components/SpinningWheel"), { ssr: false });
 
 export default function Home() {
+  const videoRef = useRef(null);
+  const data = dataJSON.data;
+  const chances = dataJSON.chances;
+
+  const [showVideo, setShowVideo] = useState(false);
+  const [prizeNumber, setPrizeNumber] = useState<number | null>(null);
+
+  useEffect(() => {
+    const initialPrize = getIndexByChance(chances);
+    setPrizeNumber(initialPrize);
+    console.log("useEffect")
+  }, [chances]);
+
+  const handleWheelStop = () => {
+    setTimeout(() => {
+      setShowVideo(true);
+      if (videoRef.current) {
+        (videoRef.current as HTMLVideoElement).play();
+      }
+    }, 1000);
+  };
+
+  const handleVideoEnd = () => {
+    setShowVideo(false);
+    setTimeout(() => {
+      setPrizeNumber(getIndexByChance(chances));
+    }, 1000);
+  };
+
   return (
-    <main className="h-screen w-screen relative">
-      <SpinningWheel />
-      <div className="flex justify-center items-center absolute top-0 left-0 w-full h-full z-10">
-        <Image src="/ball.png" width={210} height={210} alt="ball" className=""/>
-      </div>
-      
+    <main className="flex items-center justify-center min-h-screen w-screen bg-primary">
+      <SpinningWheel
+        data={data}
+        prizeNumber={prizeNumber}
+        onWheelStop={handleWheelStop}
+      />
+      {prizeNumber !== null && (
+        <video
+          ref={videoRef}
+          src={data[prizeNumber].video}
+          className={`z-20 fixed w-screen bg-primary transition-opacity duration-1000 ease-in-out ${
+            showVideo ? "opacity-100" : "opacity-0"
+          }`}
+          onEnded={handleVideoEnd}
+        />
+      )}
     </main>
   );
 }
