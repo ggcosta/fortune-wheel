@@ -6,6 +6,7 @@ import connectDb from '@/utils/db'
 export async function getAwards (){
   try {
     await connectDb();
+    console.log("Getting all awards");
     const data = JSON.parse(JSON.stringify(await Award.find()));
     return { data }
   } catch (error) {
