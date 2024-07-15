@@ -1,52 +1,28 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
-
-const filePath = path.join(process.cwd(), "data", "prizes.json");
-
-const readPrizes = () => {
-  if (!fs.existsSync(filePath)) {
-    fs.writeFileSync(filePath, JSON.stringify({}));
-  }
-  const data = fs.readFileSync(filePath, "utf8");
-  return JSON.parse(data);
-};
-
-const writePrizes = (prizes: any) => {
-  console.log(filePath)
-  fs.writeFileSync(filePath, JSON.stringify(prizes, null, 2));
-};
-
+import Award from "@/models/Award";
 
 export async function GET() {
-  const prizes = readPrizes();
-  return NextResponse.json(prizes);
-};
-
-export async function POST(request: Request) {
-  const prizes = readPrizes();
-
   try {
-    const { prize } = await request.json();
-    console.log(prize);
-    const prizeIndex = prizes.prizes_given.findIndex((item: any) => item.name === prize);
-    console.log("test1")
-    if (prizeIndex !== -1) {
-      prizes.prizes_given[prizeIndex].amountGiven += 1;
-    } else {
-      prizes.prizes_given.push({ name: prize, amountGiven: 1 });
-    }
-    console.log("test2")
-    console.log(writePrizes(prizes));
-    console.log("test3")
-    return NextResponse.json(prizes);
+    const awards = await Award.find();
+
+    return NextResponse.json({ awards }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: 'Invalid request data' }, { status: 400 });
+    return NextResponse.json({ message: "Error", error }, { status: 500 });
   }
 }
 
-export async function DELETE() {
-  const emptyPrizes = { prizes_given: [] };
-  writePrizes(emptyPrizes);
-  return NextResponse.json(emptyPrizes);
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    await Award.create(body);
+
+    return NextResponse.json(
+      { message: "Award created successfully" },
+      { status: 201, headers: { "Content-Type": "application/json" }} 
+    );
+  } catch (error){
+    return NextResponse.json({ message: "Error", error }, { status: 500 });
+  }
 }
+
+export async function DELETE() {}

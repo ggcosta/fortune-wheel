@@ -21,9 +21,6 @@ const SpinningWheel = ({ data, prizeNumber, onWheelStop }: SpinningWheelProps) =
   useEffect(() => {
     const handleWheelSpin = () => {
       setSpin(true);
-      if (prizeNumber !== null) {
-        console.log(prizeNumber)
-      }
     };
     
     if (typeof window === "object") {

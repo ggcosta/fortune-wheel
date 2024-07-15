@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import dataJSON from "@/data.json";
 import { getIndexByChance } from "@/utils/aux";
 import { useEffect, useRef, useState } from "react";
+import { addAward } from "@/_actions/awardActions";
 
 
 const SpinningWheel = dynamic(() => import("./components/SpinningWheel"), { ssr: false });
@@ -16,28 +17,10 @@ export default function Home() {
   const [showVideo, setShowVideo] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState<number | null>(null);
 
-  const updatePrize = async (prize: any) => {
-    console.log(prize);
-    try {
-      const response = await fetch("/api/prizes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({ prize }),
-      });
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   useEffect(() => {
     const initialPrize = getIndexByChance(chances);
     setPrizeNumber(initialPrize);
-    updatePrize(data[initialPrize].option);
-    console.log("useEffect")
+    addAward(data[initialPrize].option);
   }, [chances, data]);
 
   const handleWheelStop = () => {
@@ -54,9 +37,11 @@ export default function Home() {
     setTimeout(() => {
       const newPrize = getIndexByChance(chances);
       setPrizeNumber(newPrize)
-      updatePrize(data[newPrize].option);
+      addAward(data[newPrize].option);
     }, 1000);
   };
+
+
 
   return (
     <main className="flex items-center justify-center min-h-screen w-screen bg-primary">
