@@ -16,11 +16,28 @@ export default function Home() {
   const [showVideo, setShowVideo] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState<number | null>(null);
 
+  const updatePrize = async (prize: any) => {
+    console.log(prize);
+    try {
+      const response = await fetch("/api/prizes", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          method: "POST",
+        },
+        body: JSON.stringify({ prize }),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     const initialPrize = getIndexByChance(chances);
     setPrizeNumber(initialPrize);
+    updatePrize(data[initialPrize].option);
     console.log("useEffect")
-  }, [chances]);
+  }, [chances, data]);
 
   const handleWheelStop = () => {
     setTimeout(() => {
@@ -34,7 +51,9 @@ export default function Home() {
   const handleVideoEnd = () => {
     setShowVideo(false);
     setTimeout(() => {
-      setPrizeNumber(getIndexByChance(chances));
+      const newPrize = getIndexByChance(chances);
+      setPrizeNumber(newPrize)
+      updatePrize(data[newPrize].option);
     }, 1000);
   };
 

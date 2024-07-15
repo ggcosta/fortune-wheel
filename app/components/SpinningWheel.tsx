@@ -16,7 +16,16 @@ const SpinningWheel = ({ data, prizeNumber, onWheelStop }: SpinningWheelProps) =
   const [spin, setSpin] = useState(false);
   const [isBrowser, setIsBrowser] = useState(false);
 
+  
+
   useEffect(() => {
+    const handleWheelSpin = () => {
+      setSpin(true);
+      if (prizeNumber !== null) {
+        console.log(prizeNumber)
+      }
+    };
+    
     if (typeof window === "object") {
       setIsBrowser(true);
     }
@@ -30,11 +39,8 @@ const SpinningWheel = ({ data, prizeNumber, onWheelStop }: SpinningWheelProps) =
     return () => {
       document.removeEventListener("keydown", handleEnter);
     };
-  }, []);
+  }, [prizeNumber]);
 
-  const handleWheelSpin = () => {
-    setSpin(true);
-  };
 
   const handleWheelStop = () => {
     setTimeout(() => {
