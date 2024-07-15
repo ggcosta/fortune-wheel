@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       prizes.prizes_given.push({ name: prize, amountGiven: 1 });
     }
     console.log("test2")
-    writePrizes(prizes);
+    console.log(writePrizes(prizes));
     console.log("test3")
     return NextResponse.json(prizes);
   } catch (error) {
