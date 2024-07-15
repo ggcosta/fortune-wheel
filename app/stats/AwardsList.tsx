@@ -1,16 +1,12 @@
-// components/AwardsList.js
 "use client"; // This directive makes the component a Client Component
 
 import { deleteAllAwards, getAwards } from "@/_actions/awardActions";
-import { useState, useEffect } from 'react';
 
-export default function AwardsList({ initialAwards }: { initialAwards: any[] }) {
-  const [awards, setAwards] = useState(initialAwards);
+export default function AwardsList({ awards }: { awards: any[] }) {
 
   const handleDeleteAll = async () => {
     await deleteAllAwards();
     const res = await getAwards();
-    setAwards(res.data);
   };
 
   return (

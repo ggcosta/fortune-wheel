@@ -1,13 +1,24 @@
+"use client";
+
+import { useEffect, useState } from 'react';
 import { getAwards } from "@/_actions/awardActions";
 import AwardsList from "@/app/stats/AwardsList";
 
-export default async function Stats() {
-  const res = await getAwards();
-  const awards = res.data;
+export default function Stats() {
+  const [awards, setAwards] = useState([]);
+
+  const fetchAwards = async () => {
+    const res = await getAwards();
+    setAwards(res.data);
+  }
+
+  useEffect(() => {
+    fetchAwards();
+  }, []);
 
   return (
     <div className="m-10">
-      <AwardsList initialAwards={awards} />
+      <AwardsList awards={awards} />
     </div>
   );
 }
