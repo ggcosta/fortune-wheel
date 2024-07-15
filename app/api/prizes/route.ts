@@ -13,6 +13,7 @@ const readPrizes = () => {
 };
 
 const writePrizes = (prizes: any) => {
+  console.log(filePath)
   fs.writeFileSync(filePath, JSON.stringify(prizes, null, 2));
 };
 
