@@ -1,3 +1,8 @@
 {
-  "prizes_given": []
+  "prizes_given": [
+    {
+      "name": "Post It",
+      "amountGiven": 1
+    }
+  ]
 }
