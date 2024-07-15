@@ -22,11 +22,12 @@ export default function Home() {
       const response = await fetch("/api/prizes", {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
-          method: "POST",
         },
         body: JSON.stringify({ prize }),
       });
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
