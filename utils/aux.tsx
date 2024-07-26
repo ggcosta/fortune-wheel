@@ -1,3 +1,13 @@
+function getChancesArray2(data: any): number[] {
+  let chances: number[] = [];
+
+  data.forEach((item:any) => {
+    chances.push(item.chance);
+  });
+
+  return chances;
+}
+
 function getIndexByChance(chances: number[]): number {
   const totalChance = chances.reduce((sum, chance) => sum + chance, 0);
   const randomNum = Math.random() * totalChance;
@@ -13,4 +23,4 @@ function getIndexByChance(chances: number[]): number {
   return -1;
 }
 
-export { getIndexByChance };
+export { getIndexByChance, getChancesArray2 };

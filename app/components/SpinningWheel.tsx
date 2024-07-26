@@ -2,12 +2,12 @@
 
 import { Wheel } from "react-custom-roulette";
 import { useEffect, useState } from "react";
-import { getIndexByChance } from "@/utils/aux";
-import data from "@/data.json";
 import Image from "next/image";
+import { addAward } from "@/_actions/awardActions";
+
 
 type SpinningWheelProps = {
-  data: any; // Replace 'any' with the actual type of the 'data' prop
+  data: any;
   prizeNumber: number | null;
   onWheelStop: () => void;
 };
@@ -27,16 +27,17 @@ const SpinningWheel = ({ data, prizeNumber, onWheelStop }: SpinningWheelProps) =
       setIsBrowser(true);
     }
     const handleEnter = (event: KeyboardEvent) => {
-      if (event.key === "Enter") {
+      if (event.key === "Enter" && prizeNumber !== null) {
         handleWheelSpin();
+        addAward(data[prizeNumber].option);
       }
     };
 
-    document.addEventListener("keydown", handleEnter);
+    document.addEventListener("keyup", handleEnter);
     return () => {
-      document.removeEventListener("keydown", handleEnter);
+      document.removeEventListener("keyup", handleEnter);
     };
-  }, [prizeNumber]);
+  }, [prizeNumber, data]);
 
 
   const handleWheelStop = () => {

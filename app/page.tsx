@@ -1,27 +1,37 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import dataJSON from "@/data.json";
+import dataJSON from "@/config.json";
 import { getIndexByChance } from "@/utils/aux";
 import { useEffect, useRef, useState } from "react";
-import { addAward } from "@/_actions/awardActions";
+import { initiateAwards, getChancesArray } from "@/_actions/awardActions";
 
-
-const SpinningWheel = dynamic(() => import("./components/SpinningWheel"), { ssr: false });
+const SpinningWheel = dynamic(() => import("./components/SpinningWheel"), {
+  ssr: false,
+});
 
 export default function Home() {
   const videoRef = useRef(null);
   const data = dataJSON.data;
-  const chances = dataJSON.chances;
+  //const chances = useMemo(() => getChancesArray2(data), [data]);
 
+  const [chances, setChances] = useState<any>(null);
   const [showVideo, setShowVideo] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState<number | null>(null);
 
   useEffect(() => {
-    const initialPrize = getIndexByChance(chances);
+    handleInitiateAwards();
+  }, []);
+
+  const handleInitiateAwards = async () => {
+    const res = await initiateAwards(data);
+    console.log(res);
+    const newChances = await getChancesArray(data);
+    console.log(newChances);
+    setChances(newChances);
+    const initialPrize = getIndexByChance(newChances as number[]);
     setPrizeNumber(initialPrize);
-    addAward(data[initialPrize].option);
-  }, [chances, data]);
+  };
 
   const handleWheelStop = () => {
     setTimeout(() => {
@@ -36,20 +46,21 @@ export default function Home() {
     setShowVideo(false);
     setTimeout(() => {
       const newPrize = getIndexByChance(chances);
-      setPrizeNumber(newPrize)
-      addAward(data[newPrize].option);
+      setPrizeNumber(newPrize);
     }, 1000);
   };
 
-
-
   return (
     <main className="flex items-center justify-center min-h-screen w-screen bg-primary">
-      <SpinningWheel
-        data={data}
-        prizeNumber={prizeNumber}
-        onWheelStop={handleWheelStop}
-      />
+      {chances !== null ? (
+        <SpinningWheel
+          data={data}
+          prizeNumber={prizeNumber}
+          onWheelStop={handleWheelStop}
+        />
+      ) : (
+        <p>Loading...</p>
+      )}
       {prizeNumber !== null && (
         <video
           ref={videoRef}

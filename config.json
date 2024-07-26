@@ -9,7 +9,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/bone.mp4"
+      "video": "/bone.mp4",
+      "chance": 1
     },
     {
       "option": "Carregador",
@@ -20,7 +21,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/carregador.mp4"
+      "video": "/carregador.mp4",
+      "chance": 1
     },
     {
       "option": "Post It",
@@ -31,7 +33,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/post_it.mp4"
+      "video": "/post_it.mp4",
+      "chance": 1
     },
     {
       "option": "Fita",
@@ -42,7 +45,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/fita.mp4"
+      "video": "/fita.mp4",
+      "chance": 1
     },
     {
       "option": "Voucher",
@@ -53,7 +57,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/voucher.mp4"
+      "video": "/voucher.mp4",
+      "chance": 1
     },
     {
       "option": "Boné",
@@ -64,7 +69,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/bone.mp4"
+      "video": "/bone.mp4",
+      "chance": 1
     },
     {
       "option": "Post It",
@@ -75,7 +81,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/post_it.mp4"
+      "video": "/post_it.mp4",
+      "chance": 1
     },
     {
       "option": "Carregador",
@@ -86,7 +93,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/carregador.mp4"
+      "video": "/carregador.mp4",
+      "chance": 1
     },
     {
       "option": "Boné",
@@ -97,7 +105,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/bone.mp4"
+      "video": "/bone.mp4",
+      "chance": 1
     },
     {
       "option": "Moleskine",
@@ -108,7 +117,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/moleskine.mp4"
+      "video": "/moleskine.mp4",
+      "chance": 1
     },
     {
       "option": "Post It",
@@ -119,7 +129,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/post_it.mp4"
+      "video": "/post_it.mp4",
+      "chance": 1
     },
     {
       "option": "Fita",
@@ -130,7 +141,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/fita.mp4"
+      "video": "/fita.mp4",
+      "chance": 1
     },
     {
       "option": "Moleskine",
@@ -141,7 +153,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/moleskine.mp4"
+      "video": "/moleskine.mp4",
+      "chance": 1
     },
     {
       "option": "Carregador",
@@ -152,7 +165,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/carregador.mp4"
+      "video": "/carregador.mp4",
+      "chance": 1
     },
     {
       "option": "Fita",
@@ -163,7 +177,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/fita.mp4"
+      "video": "/fita.mp4",
+      "chance": 1
     },
     {
       "option": "Post It",
@@ -174,9 +189,8 @@
         "sizeMultiplier": 0.35,
         "offsetX": -50
       },
-      "video": "/post_it.mp4"
+      "video": "/post_it.mp4",
+      "chance": 1
     }
-  ],
-
-  "chances": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  ]
 }
